@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ListItemComponent } from './list-item/list-item.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'todo',
+    component: ListItemComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

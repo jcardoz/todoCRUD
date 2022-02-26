@@ -1,0 +1,14 @@
+{
+  "posts": [
+    { "id": 1, "title": "json-server", "author": "typicode" }
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 }
+  ],
+  "todos": [
+    { "id": 1, "body": "Go Running", "isPending": true },
+    { "id": 1, "body": "Learn Angular", "isPending": true },
+    { "id": 1, "body": "Learn Docker", "isPending": false }
+  ],
+  "profile": { "name": "typicode" }
+}
