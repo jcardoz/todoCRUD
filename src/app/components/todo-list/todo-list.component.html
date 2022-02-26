@@ -1,5 +1,10 @@
-<h1>TODO</h1>
-<h2>Things to do:</h2>
-<ul *ngFor="let item of todoList$ | async">
-  <app-list-item></app-list-item>
-</ul>
+<h1>TODO List</h1>
+<div *ngIf="(todoList$ | async) as todoList; else loading">
+  {{ todoList.length }} pending items
+  <ul>
+    <app-list-item *ngFor="let item of todoList" [item] = item></app-list-item>
+  </ul>
+</div>
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>

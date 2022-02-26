@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { ListItemComponent } from './components/list-item/list-item.component';
 import { ListHelperService } from './services/list-helper.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ListHelperService } from './services/list-helper.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [ListHelperService],
   bootstrap: [AppComponent]

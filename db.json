@@ -7,8 +7,8 @@
   ],
   "todos": [
     { "id": 1, "body": "Go Running", "isPending": true },
-    { "id": 1, "body": "Learn Angular", "isPending": true },
-    { "id": 1, "body": "Learn Docker", "isPending": false }
+    { "id": 2, "body": "Learn Angular", "isPending": true },
+    { "id": 3, "body": "Learn Docker", "isPending": false }
   ],
   "profile": { "name": "typicode" }
 }
