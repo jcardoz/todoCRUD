@@ -13,13 +13,13 @@ export class TodoListComponent implements OnInit {
   constructor(private listService: ListHelperService) { }
 
   ngOnInit(): void {
-    setTimeout(() => {
-    this.fetchTodoList();
-    }, 5000);
+    // setTimeout(() => {
+    // this.fetchTodoList();
+    // }, 5000);
   }
 
-  private fetchTodoList(): void {
-    this.todoList$ = this.listService.fetchListItems();
-  }
+  // private fetchTodoList(): void {
+  //   this.todoList$ = this.listService.fetchListItems();
+  // }
 
 }
