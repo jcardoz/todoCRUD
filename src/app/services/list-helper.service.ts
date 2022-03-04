@@ -53,8 +53,8 @@ export class ListHelperService {
 
   // read a new item (READ)
   // get list of items
-  public getListItems(): Observable<TodoItem[]> {
-    return of(this.todoListBS.value);
+  public getListItems(): Observable<BehaviorSubject<TodoItem[]>> {
+    return of(this.todoListBS);
   }
 
   // update an existing list item (UPDATE)

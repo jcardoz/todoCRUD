@@ -3,6 +3,7 @@ import { TodoItem } from '../components/types/todo-item';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { ListHelperService } from './list-helper.service';
+import { BehaviorSubject } from 'rxjs';
 
 describe('ListHelperService', () => {
   let service: ListHelperService;
@@ -31,18 +32,18 @@ describe('ListHelperService', () => {
     };
 
     // assert
-    service.getListItems().subscribe((list: TodoItem[]) => {
-      expect(list.length).toBe(4);
-      console.log(list);
+    service.getListItems().subscribe((list: BehaviorSubject<TodoItem[]>) => {
+      expect(list.value.length).toBe(4);
+      console.log(list.value);
     });
 
     // act
     service.addNewItem(newItem);
 
     // assert
-    service.getListItems().subscribe((list: TodoItem[]) => {
-      expect(list.length).toBe(5);
-      console.log(list);
+    service.getListItems().subscribe((list: BehaviorSubject<TodoItem[]>) => {
+      expect(list.value.length).toBe(5);
+      console.log(list.value);
     });
   });
 
@@ -58,11 +59,12 @@ describe('ListHelperService', () => {
     service.updateItem(updatedItem);
 
     // assert
-    service.getListItems().subscribe((list: TodoItem[]) => {
-      expect(list.length).toBe(4);
-      expect(list[0].body).toBe(updatedItem.body);
+    service.getListItems().subscribe((list: BehaviorSubject<TodoItem[]>) => {
+      expect(list.value.length).toBe(4);
+      expect(list.value[0].body).toBe(updatedItem.body);
     });
   });
+
   it('should delete an item from the list', () => {
     // arrange
     const deletedItemId = 1;
@@ -71,8 +73,8 @@ describe('ListHelperService', () => {
     service.deleteItem(deletedItemId);
 
     // assert
-    service.getListItems().subscribe((list: TodoItem[]) => {
-      expect(list.length).toBe(3);
+    service.getListItems().subscribe((list: BehaviorSubject<TodoItem[]>) => {
+      expect(list.value.length).toBe(3);
     });
   });
 });

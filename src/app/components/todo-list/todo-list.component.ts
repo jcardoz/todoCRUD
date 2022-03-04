@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of, Subscriber, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ListHelperService } from 'src/app/services/list-helper.service';
 import { TodoItem } from '../types/todo-item';
 
@@ -9,17 +9,35 @@ import { TodoItem } from '../types/todo-item';
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent implements OnInit {
-  todoList$: Observable<TodoItem[]> | undefined;
+  todoList$: Observable<BehaviorSubject<TodoItem[]>> | undefined;
   constructor(private listService: ListHelperService) { }
 
   ngOnInit(): void {
-    // setTimeout(() => {
-    // this.fetchTodoList();
-    // }, 5000);
+    this.fetchTodoList();
   }
 
-  // private fetchTodoList(): void {
-  //   this.todoList$ = this.listService.fetchListItems();
-  // }
+  private fetchTodoList(): void {
+    this.todoList$ = this.listService.getListItems();
+  }
 
+  public addNewItem(): void {
+    const newItem: TodoItem = {
+      id: 100,
+      body: 'SUPER FANCY NEW ITEM',
+      isPending: true
+    };
+    this.listService.addNewItem(newItem);
+  }
+
+  public deleteFirstItem(): void {
+    this.listService.deleteItem(1);
+  }
+
+  public updateItem(): void {
+    this.listService.updateItem({
+      id: 3,
+      body: 'sample todo 3',
+      isPending: false,
+    });
+  }
 }

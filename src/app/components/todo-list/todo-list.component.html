@@ -1,8 +1,11 @@
 <h1>TODO List</h1>
 <div *ngIf="(todoList$ | async) as todoList; else loading">
-  {{ todoList.length }} pending items
+  {{ todoList.value.length }} pending items
+  <button (click)="addNewItem()">Add a new item</button>
+  <button (click)="deleteFirstItem()">Delete first item</button>
+  <button (click)="updateItem()">update an item</button>
   <ul>
-    <app-list-item *ngFor="let item of todoList" [item] = item></app-list-item>
+    <app-list-item *ngFor="let item of todoList.value" [item] = item></app-list-item>
   </ul>
 </div>
 <ng-template #loading>
